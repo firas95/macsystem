@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="report_purchaseorder_document_inherited" inherit_id="purchase.report_purchaseorder_document">
+           	<xpath expr="//t/div/div[4]/div/table[@class='table table-condensed']/tr[2]" position="replace">	
+						<tr>
+                            <td>Transport et logistique material</td>
+                            <td class="text-right">
+                                <span t-field="o.x_tot_log_imp"
+                                    t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Main doeuvre</td>
+                            <td class="text-right">
+                                <span t-field="o.x_ma_oe"
+                                    t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Marge Macsys</td>
+                            <td class="text-right">
+                                <span t-field="o.x_marg_mac"
+                                    t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
+                            </td>
+                        </tr>
+                          <tr>
+                            <td>Prix total</td>
+                            <td class="text-right">
+                                <span t-field="o.x_pri_tot"
+                                    t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
+                            </td>
+                        </tr>
+			</xpath> 
+       </template>
+	</data>
+</odoo>

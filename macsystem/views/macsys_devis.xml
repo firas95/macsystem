@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_sale_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.sale</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_untaxed']" position="after">			 
+                     <field name="x_tra_log_imp" />
+                     <field name="x_ma_oe" />
+                     <field name="x_marg_mac"/>                  		
+				</xpath>
+				<xpath expr="///field[@name='partner_id']" position="after">
+					<field name="x_tra_log_imp_perc"/>
+				    <field name="x_ma_oe_perc"/>
+				    <field name="x_marg_mac_perc"/>
+				</xpath>
+				<field name="amount_tax" position="replace"/>
+				<xpath expr="///field[@name='amount_total']" position="before">
+				<div class="oe_subtotal_footer_separator oe_inline o_td_label">
+						<button name="button_dummy" states="draft,sent" string="(mise à jour)" type="object" class="oe_edit_only oe_link" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent']]]}"/>
+					</div>
+					<field name="x_pri_tot"  class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}" on_change="1" modifiers="{'readonly': true}"/>
+				</xpath>
+				<field name="amount_total" position="replace"/>
+				<button name="button_dummy" position="replace"/>
+            </field>
+        </record>   
+</odoo>
